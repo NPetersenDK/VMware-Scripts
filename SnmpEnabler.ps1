@@ -10,6 +10,10 @@
     Nikolaj Petersen / NPetersenDK
     gist.github.com/NPetersenDK
     https://nipetersen.dk
+
+.Description
+    Enabling SSH on your cluster, and SSH'ing into the host to set the community key AND enable SNMP
+    Afterwards starting the SNMP service through VCSA
 #>
 
 $vcsa = "VCSAServer"
