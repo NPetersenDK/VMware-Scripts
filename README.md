@@ -1,5 +1,5 @@
 # VMware-Scripts
-PowerShell/other scripts for use in and around VMware hosts. Mostly by using VMware PowerCLI
+PowerShell/other scripts for use in and around VMware hosts and a lot of different VMware Services. This is mostly by using VMware PowerCLI :)
 
 ```
  ____  _____ _____ _____ ____  ____  _____ _   _
@@ -12,3 +12,6 @@ PowerShell/other scripts for use in and around VMware hosts. Mostly by using VMw
     gist.github.com/NPetersenDK
     https://nipetersen.dk
 ```
+
+#Disclaimer
+The scripts and programs are released without any support and if stuff breaks, blame yourself - not me :)
