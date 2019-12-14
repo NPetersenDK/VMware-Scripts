@@ -20,7 +20,7 @@ $vcsa = "VCSAServer"
 Connect-VIServer $vcsa -Credential (Get-Credential)
 
 $sshcred = (Get-Credential)
-$esxhosts = Get-Cluster Clustername | Get-VMHost
+$esxhosts = Get-Cluster Clustername | Get-VMHost | Where-Object {$_.ConnectionState -eq "Connected"}
 
 foreach ($esxhost in $esxhosts) {
     Write-Host $esxhost.Name
