@@ -16,7 +16,7 @@ PowerShell/other scripts for use in and around VMware hosts and a lot of differe
 # Disclaimer
 The scripts and programs are released without any support and if stuff breaks I'm not responsible. Although you're more than happy to contact me, and I might help.
 
-As per usual test the scripts before executing them, normally i comment out things where I change stuff.
+As per usual test the scripts before executing them, normally i comment out things where I change stuff, so you have a chance to actually test it before running. Please double check though :)
 
 # License
 Released under the MIT LICENSE - check the LICENSE file
