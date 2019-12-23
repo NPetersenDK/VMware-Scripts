@@ -33,7 +33,7 @@ foreach ($server in $servers) {
     $adapters = Get-NetworkAdapter -VM $vm
 
     foreach ($adapter in $adapters) {
-        if ($adapter.NetworkName -eq $PortGroup) {
+        if ($adapter.NetworkName -eq $OldPortGroup) {
             Write-Host "Adapter is on $PortGroup - changing to $NewPortGroup"
             #Set-NetworkAdapter -NetworkAdapter $adapter -Portgroup $GetNewPG
         }
