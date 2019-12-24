@@ -13,15 +13,15 @@ PowerShell/other scripts for use in and around VMware hosts and a lot of differe
     https://nipetersen.dk
 ```
 # Description of my scripts
-
+A list and a little description of the scripts in this repository 
 
 ### SnmpEnabler
 Enables SNMP on all ESX servers in your cluster, by changing one variable you can one cluster at a time enable SNMP
 
-## Change-VMPG
+### Change-VMPG
 I needed a way to change all VM's on a Port Group in VMWare, so i made a little script that lists all VM's on a Distributed Port Group and changing it to another one.
 
-## function-ConnectVCSA
+### function-ConnectVCSA
 I really easy script, but a nice one to have enabled in your PowerShell profile, so the only thing you have to do is type "Connect-ProdVCSA" (or another name you can change) and it will connect to the VCSA after you type in your password. 
 
 Easy script, but a joy of life script :)
