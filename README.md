@@ -19,7 +19,7 @@ A list and a little description of the scripts in this repository
 Enables SNMP on all ESX servers in your cluster, by changing one variable you can one cluster at a time enable SNMP
 
 ### Change-VMPG
-I needed a way to change all VM's on a Port Group in VMWare, so i made a little script that lists all VM's on a Distributed Port Group and changing it to another one.
+I needed a way to change/migrate all VM's on a Port Group in VMware, so i made a little script that lists all VM's on a Distributed Port Group and changing it to another one. It also checks if there is more than one network card on that VM, and only changes the PG/Interface if it's on the one you want to migrate away from.
 
 ### function-ConnectVCSA
 I really easy script, but a nice one to have enabled in your PowerShell profile, so the only thing you have to do is type "Connect-ProdVCSA" (or another name you can change) and it will connect to the VCSA after you type in your password. 
