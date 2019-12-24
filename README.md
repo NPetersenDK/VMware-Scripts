@@ -12,9 +12,10 @@ PowerShell/other scripts for use in and around VMware hosts and a lot of differe
     gist.github.com/NPetersenDK
     https://nipetersen.dk
 ```
-# Description
+# Description of my scripts
 
-## SnmpEnabler
+
+### SnmpEnabler
 Enables SNMP on all ESX servers in your cluster, by changing one variable you can one cluster at a time enable SNMP
 
 ## Change-VMPG
