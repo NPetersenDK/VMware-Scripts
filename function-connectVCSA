@@ -23,7 +23,7 @@ function Connect-ProdVCSA {
     $vcsa = "vcenter.dns.tld"
     
     $cred = (Get-Credential) 
-    Connect-VIServer $vcsa -Credential $null
+    Connect-VIServer $vcsa -Credential $cred
     Connect-NsxServer -vCenterServer $vcsa -Credential $cred
 
     $cred = $null
@@ -33,7 +33,7 @@ function Connect-VdiVCSA {
     $vcsa = "vdivcsa.dns.tld"
     
     $cred = (Get-Credential) 
-    Connect-VIServer $vcsa -Credential $null
+    Connect-VIServer $vcsa -Credential $cred
     Connect-NsxServer -vCenterServer $vcsa -Credential $cred
 
     $cred = $null
