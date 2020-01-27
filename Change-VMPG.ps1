@@ -14,15 +14,21 @@
     Changing old servers on a specific PortGroup to a new one
 #>
 
+$Date = Get-Date -UFormat "%d-%m-%Y-%H%M%S"
+$LogFile = "$PSScriptRoot\Change-VMPG-$Date.txt"
+function Logging($data){
+    "$((Get-Date).ToLocalTime()): $data" | Out-File -FilePath $LogFile -Encoding utf8 -Append
+    Write-Host $data
+}
 
 #$vcsa = "YourVCSA.dns.tld"
 #Connect-VIServer $vcsa -Credential (Get-Credential)
 
 #Variables:
 #The PG that have VM's you want to change
-$OldPortGroup = "Old-PGNAME"
+$OldPortGroup = "OLDPG"
 #The PG you want them to migrate to
-$NewPortGroup = "New-PGNAME"
+$NewPortGroup = "NEWPG"
 
 #Getting the PG and VM ID's
 $GetOldPGVMs = Get-View -ViewType Network -Property Name,VM -Filter @{Name=$OldPortGroup}
@@ -31,9 +37,12 @@ $servers = Get-View -Id $GetOldPGVMs.Vm -Property Name
 #Getting the new PG
 $GetNewPG = Get-VDPortgroup -Name $NewPortGroup
 
+Logging "START: Moving all VM's from PortGroup $OldPortGroup to $NewPortGroup"
+
 foreach ($server in $servers) {
     $vm = Get-VM $server.Name
-    Write-Host $vm
+    $VMName = $VM.Name
+    Logging "INFO: Working on VM $vm"
     
     #Getting the network adapter for the VM
     $adapters = Get-NetworkAdapter -VM $vm
@@ -42,13 +51,18 @@ foreach ($server in $servers) {
     foreach ($adapter in $adapters) {
         # If adapter is on OldPortGroup
         if ($adapter.NetworkName -eq $OldPortGroup) {
-            Write-Host "Adapter is on $PortGroup - changing to $NewPortGroup"
-            #Setting the networkadapter to the new PG
-            #Set-NetworkAdapter -NetworkAdapter $adapter -Portgroup $GetNewPG
+            $CurrentNetwork = $adapter.NetworkName
+
+            Logging "INFO: Adapter is on $CurrentNetwork - disconnecting, setting to $NewPortGroup and connecting."
+
+                Set-NetworkAdapter -NetworkAdapter $adapter -Connected $false -Confirm:$false
+                Set-NetworkAdapter -NetworkAdapter $adapter -Portgroup $GetNewPG -Confirm:$false
+                Set-NetworkAdapter -NetworkAdapter $adapter -Connected $true -Confirm:$false
         }
         # Adapter not on  $OldPortGroup
         else {
-            Write-Host "Adapter is not on PortGroup - not setting!" $adapter.NetworkName "-" $vm.Name -ForegroundColor Red
+            Logging "ALERT: Adapter is not on PortGroup - not setting! $CurrentNetwork - $VMName"
         }
     }
+    Logging " -- "
 }
