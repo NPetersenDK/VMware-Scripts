@@ -61,6 +61,7 @@ foreach ($server in $servers) {
         }
         # Adapter not on  $OldPortGroup
         else {
+            $CurrentNetwork = $adapter.NetworkName
             Logging "ALERT: Adapter is not on PortGroup - not setting! $CurrentNetwork - $VMName"
         }
     }
