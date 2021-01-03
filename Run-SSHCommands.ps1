@@ -4,9 +4,9 @@
     n@nipetersen.dk
 
 .Description
-  This script was created due to an error in NSX where the cluster will go into 100% CPU mode.
-  The fix for that was to disable the agent by hand on all hosts, which takes some time manually.
-  This script might be usable for other things aswell, therefore this script is generic.
+This script is to enable SSH on ESX hosts in cluster 
+and running the command over SSH in the $Command parameter.
+
 
 What it does:
     1) Firstly we connect to the VCSA asking for credentials
