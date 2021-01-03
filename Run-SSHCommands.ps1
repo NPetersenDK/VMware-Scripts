@@ -19,6 +19,7 @@ What it does:
 ## Parameters
 $vcsa = "VCSA.domain.tld"
 $Cluster = "ClusterName"
+$Command = "ChangeMe"
 
 Connect-VIServer $vcsa -Credential (Get-Credential -Message "Credentials for VCSA")
 
@@ -30,7 +31,7 @@ foreach ($esxhost in $esxhosts) {
 
     Start-VMHostService -HostService ($esxhost | Get-VMHostService | Where { $_.Key -eq "TSM-SSH"})
     $sshsession = New-SSHSession -ComputerName $esxhost -Credential $sshcred
-    Invoke-SSHCommand -Index $sshsession.Sessionid -Command "/etc/init.d/vShield-Stateful-Firewall stop"
+    Invoke-SSHCommand -Index $sshsession.Sessionid -Command "$($Command)"
     Remove-SSHSession -Index $sshsession.Sessionid
 
 }
