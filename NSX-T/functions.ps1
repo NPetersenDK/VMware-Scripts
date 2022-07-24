@@ -17,6 +17,9 @@ function Connect-NSXTApi {
     $Base64Creds = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($httpcred))
 
     $Global:headers = @{ Authorization = "Basic $Base64Creds" }
+    $global:headers.Add("X-Allow-Overwrite", "true")
+    $global:headers.Add("Accept", "application/json")
+    $global:headers.Add("Content-type", "application/json")
 
     $PolicyURL = "https://$nsxtmanager/api/v1/node/services/policy/status"
 
